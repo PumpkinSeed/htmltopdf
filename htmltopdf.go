@@ -9,7 +9,7 @@ import (
 
 const path = "/usr/local/bin/wkhtmltopdf"
 
-func Example(file string) error {
+func Example(file string, pdfFile string) error {
 	html, err := ioutil.ReadFile(file)
 	if err != nil {
 		return err
@@ -26,7 +26,6 @@ func Example(file string) error {
 	page.DisableExternalLinks.Set(false)
 	pdfg.AddPage(page)
 	pdfg.Dpi.Set(350)
-	//pdfg.PageWidth.Set(264)
 	pdfg.MarginBottom.Set(0)
 	pdfg.MarginTop.Set(0)
 	pdfg.MarginLeft.Set(0)
@@ -37,7 +36,7 @@ func Example(file string) error {
 		return err
 	}
 
-	err = pdfg.WriteFile("./invoice.pdf")
+	err = pdfg.WriteFile(pdfFile)
 	if err != nil {
 		return err
 	}
