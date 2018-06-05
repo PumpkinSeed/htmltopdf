@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  wkhtmltopdf:
+    image: alpine:3.7
+    volumes:
+      - ./installer:/var/lib/installer
+    command: "sh /var/lib/installer/wkhtmltox-install.sh"
